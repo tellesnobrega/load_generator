@@ -60,12 +60,14 @@ def main(args):
            
             cpu_usage = get_cpu_usage(cpu_line)
             
-            cmd = "lookbusy -c %i" % (cpu_usage)
+            cmd = "exec lookbusy -c %i" % (cpu_usage)
             
-            os.system(cmd)
+            p = subprocess.Popen(cmd,
+                    stdout=subprocess.PIPE, shell=True)
             
             time.sleep(60)
-            
+            p.kill()
+            time.sleep(5)
     elif testing == "mem":
         mem_file_path = str(args[1])
         mem_file = open(mem_file_path, 'r') 
