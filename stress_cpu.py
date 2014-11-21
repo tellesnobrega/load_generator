@@ -50,7 +50,7 @@ def main(args):
             
             time.sleep(60)
             
-    else if testing == 'cpu':
+    elif testing == 'cpu':
         cpu_file_path = str(args[1])
         cpu_file = open(cpu_file_path, 'r') 
         cpu_lines = cpu_file.readlines()
@@ -66,7 +66,7 @@ def main(args):
             
             time.sleep(60)
             
-    else if testing == 'mem':
+    elif testing == 'mem':
         mem_file_path = str(args[1])
         mem_file = open(mem_file_path, 'r') 
         total_mem = psutil.phymem_usage().total
@@ -76,13 +76,13 @@ def main(args):
             mem_line = mem_lines[i]
             mem_usage = get_mem_usage(total_mem, mem_line)
             
-            cmd = "lookbusy -c %i -m %i -d %i" % (cpu_usage, mem_usage, io_usage)
+            cmd = "lookbusy -m %i" % (mem_usage)
                 
             os.system(cmd)
             
             time.sleep(60)
             
-    else if testing == 'io':
+    else testing == 'io':
         io_file_path = str(args[1])
         io_file = open(io_file_path, 'r') 
         io_lines = io_file.readlines()
