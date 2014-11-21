@@ -2,6 +2,7 @@ import sys
 import os
 import time
 import psutil
+import subprocess
 
 def _split_line(line):
     return(line.strip().split(";"))
