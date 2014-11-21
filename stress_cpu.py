@@ -76,7 +76,7 @@ def main(args):
             mem_line = mem_lines[i]
             mem_usage = get_mem_usage(total_mem, mem_line)
             
-            cmd = "lookbusy -c %i -m %i -d %i" % (cpu_usage, mem_usage, io_usage)
+            cmd = "lookbusy -m %i" % (mem_usage)
                 
             os.system(cmd)
             
