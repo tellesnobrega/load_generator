@@ -19,7 +19,7 @@ def get_io_usage(line):
     
 def main(args):
     testing = str(args[0])
-    if testing == 'all':
+    if testing == "all":
         cpu_file_path = str(args[1])
         mem_file_path = str(args[2])
         io_file_path = str(args[3])
@@ -50,7 +50,7 @@ def main(args):
             
             time.sleep(60)
             
-    elif testing == 'cpu':
+    elif testing == "cpu":
         cpu_file_path = str(args[1])
         cpu_file = open(cpu_file_path, 'r') 
         cpu_lines = cpu_file.readlines()
@@ -66,7 +66,7 @@ def main(args):
             
             time.sleep(60)
             
-    elif testing == 'mem':
+    elif testing == "mem":
         mem_file_path = str(args[1])
         mem_file = open(mem_file_path, 'r') 
         total_mem = psutil.phymem_usage().total
@@ -82,7 +82,7 @@ def main(args):
             
             time.sleep(60)
             
-    else testing == 'io':
+    else:
         io_file_path = str(args[1])
         io_file = open(io_file_path, 'r') 
         io_lines = io_file.readlines()
