@@ -3,6 +3,7 @@ import os
 import time
 import psutil
 import subprocess
+import signal
 
 def _split_line(line):
     return(line.strip().split(";"))
@@ -64,10 +65,12 @@ def main(args):
             cmd = "exec lookbusy -c %i" % (cpu_usage)
             
             p = subprocess.Popen(cmd,
-                    stdout=subprocess.PIPE, shell=True)
+                    stdout=subprocess.PIPE,
+                    shell=True,
+                    preexec_fn=os.setsid)
             
             time.sleep(60)
-            p.kill()
+            os.killpg(p.pid, signal.SIGTERM)
             time.sleep(5)
     elif testing == "mem":
         mem_file_path = str(args[1])
